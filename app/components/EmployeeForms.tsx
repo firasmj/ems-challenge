@@ -6,18 +6,18 @@ interface Employee {
     full_name: string;
     email: string;
     phone: string;
-    birthDate: string;
-    jobTitle: string;
+    birth_date: string;
+    job_title: string;
     department: string;
     salary: number;
-    startDate: string;
-    endDate: string;
+    start_date: string;
+    end_date: string;
 }
 
 interface errors {
     email: string;
     phone: string;
-    birthDate: string;
+    birth_date: string;
     salary: string;
 }
 
@@ -32,7 +32,7 @@ const EmployeesForm: React.FC<formProps> = ({ method, employee }) => {
     const [errors, setErrors] = useState<errors>({
         email: '',
         phone: '',
-        birthDate: '',
+        birth_date: '',
         salary: ''
     });
 
@@ -40,12 +40,12 @@ const EmployeesForm: React.FC<formProps> = ({ method, employee }) => {
         full_name: employee?.full_name || '',
         email: employee?.email || '',
         phone: employee?.phone || '',
-        birthDate: employee?.birthDate || '',
-        jobTitle: employee?.jobTitle || '',
+        birth_date: employee?.birth_date || '',
+        job_title: employee?.job_title || '',
         department: employee?.department || '',
         salary: employee?.salary || 800,
-        startDate: employee?.startDate || '',
-        endDate: employee?.endDate || ''
+        start_date: employee?.start_date || '',
+        end_date: employee?.end_date || ''
     });
 
 
@@ -59,7 +59,7 @@ const EmployeesForm: React.FC<formProps> = ({ method, employee }) => {
                     setErrors({ ...errors, [name]: 'Invalid email format' });
                     empData.email = '';
                 }else{
-                    setErrors({ ...errors, [name]: '' });
+                    setErrors({ ...errors, [name]: '' } as errors);
                 }
                 break;
             case 'phone':
@@ -68,7 +68,7 @@ const EmployeesForm: React.FC<formProps> = ({ method, employee }) => {
                     setErrors({ ...errors, [name]: 'Invalid phone number' });
                     empData.phone = '';
                 }else{
-                    setErrors({ ...errors, [name]: '' });
+                    setErrors({ ...errors, [name]: '' } as errors);
                 }
                 break;
             case 'salary':
@@ -88,10 +88,10 @@ const EmployeesForm: React.FC<formProps> = ({ method, employee }) => {
                     age--;
                 }
                 if (age < 18) {
-                    setErrors({ ...errors, [name]: 'Employee must be at least 18 years old' });
-                    empData.birthDate = '';
+                    setErrors({ ...errors, [name]: 'Employee must be at least 18 years old' } as errors);
+                    empData.birth_date = '';
                 }else{
-                    setErrors({ ...errors, [name]: '' });
+                    setErrors({ ...errors, [name]: '' }as errors);
                 }
                 break;
         }
@@ -109,7 +109,7 @@ const EmployeesForm: React.FC<formProps> = ({ method, employee }) => {
                 className="rounded-xl m-5 flex-col w-screen text-center justify-center bg-gray-200 p-5"
             >
                 <div className="text-red-500 flex-col">
-                    <div className="text-red-500">{errors.birthDate}</div>
+                    <div className="text-red-500">{errors.birth_date}</div>
                     <div className="text-red-500">{errors.email}</div>
                     <div className="text-red-500">{errors.phone}</div>
                     <div className="text-red-500">{errors.salary}</div>
@@ -153,10 +153,10 @@ const EmployeesForm: React.FC<formProps> = ({ method, employee }) => {
                     <div
                         className="flex flex-col"
                     >
-                        <label htmlFor="birthDate" className="justify-start text-start ml-2">Date of Birth</label>
-                        <input type="date" name="birthDate" id="birthDate"
+                        <label htmlFor="birth_date" className="justify-start text-start ml-2">Date of Birth</label>
+                        <input type="date" name="birth_date" id="birth_date"
                             className="bg-gray-100 p-2 rounded-md"
-                            value={empData.birthDate}
+                            value={empData.birth_date}
                             onChange={handleChange}
                             required />
                     </div>
@@ -164,10 +164,10 @@ const EmployeesForm: React.FC<formProps> = ({ method, employee }) => {
                     <div
                         className="flex flex-col col-span-2"
                     >
-                        <label htmlFor="jobTitle" className="justify-start text-start ml-2">Job Title</label>
-                        <input type="text" name="jobTitle" id="jobTitle"
+                        <label htmlFor="job_title" className="justify-start text-start ml-2">Job Title</label>
+                        <input type="text" name="job_title" id="job_title"
                             className="bg-gray-100 p-2 rounded-md"
-                            value={empData.jobTitle}
+                            value={empData.job_title}
                             onChange={handleChange}
                             required />
                     </div>
@@ -194,28 +194,28 @@ const EmployeesForm: React.FC<formProps> = ({ method, employee }) => {
                     <div
                         className="flex flex-col"
                     >
-                        <label htmlFor="startDate" className="justify-start text-start ml-2">Start Date</label>
-                        <input type="date" name="startDate" id="startDate"
+                        <label htmlFor="start_date" className="justify-start text-start ml-2">Start Date</label>
+                        <input type="date" name="start_date" id="start_date"
                             className="bg-gray-100 p-2 rounded-md"
-                            value={empData.startDate}
+                            value={empData.start_date}
                             onChange={handleChange}
                             required />
                     </div>
                     <div
                         className="flex flex-col"
                     >
-                        <label htmlFor="endDate" className="justify-start text-start ml-2">End Date</label>
-                        <input type="date" name="endDate" id="endDate"
+                        <label htmlFor="end_date" className="justify-start text-start ml-2">End Date</label>
+                        <input type="date" name="end_date" id="end_date"
                             className="bg-gray-100 p-2 rounded-md"
-                            value={empData.endDate}
+                            value={empData.end_date}
                             onChange={handleChange}
-                            required />
+                             />
                     </div>
                     {/* <button type="submit" className="">Create Employee</button> */}
                     <div
                         className="col-span-2 mt-5"
                     >
-                        <SubmitButton text={"Create Employee"} />
+                        <SubmitButton text={header} />
                     </div>
                 </Form>
             </div>

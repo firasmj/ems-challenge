@@ -30,24 +30,6 @@ const NavBar = () => {
             <Link to="/employees" text="Employees" />
             <Link to="/timesheets" text="Timesheets" />
             <Link to="/employees/new" text="New Employee" />
-            {/* <NavLink 
-                to="/employees"
-                className="hover:bg-gray-500 rounded-sm p-5 py-2 hover:text-white"
-                >
-                Employees
-            </NavLink>
-            <NavLink 
-                to="/employees"
-                className="bg-transparent rounded-sm p-5 py-2 hover:bg-white hover:text-black"
-                >
-                Employees
-            </NavLink>
-            <NavLink 
-                to="/employees"
-                className="bg-transparent rounded-sm p-5 py-2 hover:bg-white hover:text-black"
-                >
-                Employees
-            </NavLink> */}
         </div>
     );
 }

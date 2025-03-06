@@ -1,11 +1,12 @@
-import { useLoaderData } from "react-router";
+import { Link, useLoaderData } from "react-router";
 import { useState } from "react";
 import { getDB } from "~/db/getDB";
+import CalendarApp from "~/components/Calendar";
 
 export async function loader() {
   const db = await getDB();
   const timesheetsAndEmployees = await db.all(
-    "SELECT timesheets.*, employees.full_name, employees.id AS employee_id FROM timesheets JOIN employees ON timesheets.employee_id = employees.id"
+    "SELECT timesheets.*, employees.full_name, employees.id AS employee_id, summary FROM timesheets JOIN employees ON timesheets.employee_id = employees.id"
   );
 
   return { timesheetsAndEmployees };
@@ -14,33 +15,109 @@ export async function loader() {
 export default function TimesheetsPage() {
   const { timesheetsAndEmployees } = useLoaderData();
 
+  const [tableView, setTableView] = useState(true);
+
   return (
     <div>
       <div>
-        <button>Table View</button>
-        <button>Calendar View</button>
-      </div>
-      {/* Replace `true` by a variable that is changed when the view buttons are clicked */}
-      {true ? (
-        <div>
-          {timesheetsAndEmployees.map((timesheet: any) => (
-            <div key={timesheet.id}>
-              <ul>
-                <li>Timesheet #{timesheet.id}</li>
-                <ul>
-                  <li>Employee: {timesheet.full_name} (ID: {timesheet.employee_id})</li>
-                  <li>Start Time: {timesheet.start_time}</li>
-                  <li>End Time: {timesheet.end_time}</li>
-                </ul>
-              </ul>
-            </div>
-          ))}
+        <div
+          className="justify-center self-center flex mt-5 mb-5"
+        >
+          <button onClick={() => {
+            setTableView(!tableView);
+          }}>
+            {tableView ? (
+              <svg fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                width="40px" height="40px" viewBox="0 0 610.398 610.398">
+                <g>
+                  <g>
+                    <path d="M159.567,0h-15.329c-1.956,0-3.811,0.411-5.608,0.995c-8.979,2.912-15.616,12.498-15.616,23.997v10.552v27.009v14.052
+			c0,2.611,0.435,5.078,1.066,7.44c2.702,10.146,10.653,17.552,20.158,17.552h15.329c11.724,0,21.224-11.188,21.224-24.992V62.553
+			V35.544V24.992C180.791,11.188,171.291,0,159.567,0z"/>
+                    <path d="M461.288,0h-15.329c-11.724,0-21.224,11.188-21.224,24.992v10.552v27.009v14.052c0,13.804,9.5,24.992,21.224,24.992
+			h15.329c11.724,0,21.224-11.188,21.224-24.992V62.553V35.544V24.992C482.507,11.188,473.007,0,461.288,0z"/>
+                    <path d="M539.586,62.553h-37.954v14.052c0,24.327-18.102,44.117-40.349,44.117h-15.329c-22.247,0-40.349-19.79-40.349-44.117
+			V62.553H199.916v14.052c0,24.327-18.102,44.117-40.349,44.117h-15.329c-22.248,0-40.349-19.79-40.349-44.117V62.553H70.818
+			c-21.066,0-38.15,16.017-38.15,35.764v476.318c0,19.784,17.083,35.764,38.15,35.764h468.763c21.085,0,38.149-15.984,38.149-35.764
+			V98.322C577.735,78.575,560.671,62.553,539.586,62.553z M527.757,557.9l-446.502-0.172V173.717h446.502V557.9z"/>
+                    <path d="M353.017,266.258h117.428c10.193,0,18.437-10.179,18.437-22.759s-8.248-22.759-18.437-22.759H353.017
+			c-10.193,0-18.437,10.179-18.437,22.759C334.58,256.074,342.823,266.258,353.017,266.258z"/>
+                    <path d="M353.017,348.467h117.428c10.193,0,18.437-10.179,18.437-22.759c0-12.579-8.248-22.758-18.437-22.758H353.017
+			c-10.193,0-18.437,10.179-18.437,22.758C334.58,338.288,342.823,348.467,353.017,348.467z"/>
+                    <path d="M353.017,430.676h117.428c10.193,0,18.437-10.18,18.437-22.759s-8.248-22.759-18.437-22.759H353.017
+			c-10.193,0-18.437,10.18-18.437,22.759S342.823,430.676,353.017,430.676z"/>
+                    <path d="M353.017,512.89h117.428c10.193,0,18.437-10.18,18.437-22.759c0-12.58-8.248-22.759-18.437-22.759H353.017
+			c-10.193,0-18.437,10.179-18.437,22.759C334.58,502.71,342.823,512.89,353.017,512.89z"/>
+                    <path d="M145.032,266.258H262.46c10.193,0,18.436-10.179,18.436-22.759s-8.248-22.759-18.436-22.759H145.032
+			c-10.194,0-18.437,10.179-18.437,22.759C126.596,256.074,134.838,266.258,145.032,266.258z"/>
+                    <path d="M145.032,348.467H262.46c10.193,0,18.436-10.179,18.436-22.759c0-12.579-8.248-22.758-18.436-22.758H145.032
+			c-10.194,0-18.437,10.179-18.437,22.758C126.596,338.288,134.838,348.467,145.032,348.467z"/>
+                    <path d="M145.032,430.676H262.46c10.193,0,18.436-10.18,18.436-22.759s-8.248-22.759-18.436-22.759H145.032
+			c-10.194,0-18.437,10.18-18.437,22.759S134.838,430.676,145.032,430.676z"/>
+                    <path d="M145.032,512.89H262.46c10.193,0,18.436-10.18,18.436-22.759c0-12.58-8.248-22.759-18.436-22.759H145.032
+			c-10.194,0-18.437,10.179-18.437,22.759C126.596,502.71,134.838,512.89,145.032,512.89z"/>
+                  </g>
+                </g>
+              </svg>
+            ) : (
+              <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 9.5H21M3 14.5H21M8 4.5V19.5M6.2 19.5H17.8C18.9201 19.5 19.4802 19.5 19.908 19.282C20.2843 19.0903 20.5903 18.7843 20.782 18.408C21 17.9802 21 17.4201 21 16.3V7.7C21 6.5799 21 6.01984 20.782 5.59202C20.5903 5.21569 20.2843 4.90973 19.908 4.71799C19.4802 4.5 18.9201 4.5 17.8 4.5H6.2C5.0799 4.5 4.51984 4.5 4.09202 4.71799C3.71569 4.90973 3.40973 5.21569 3.21799 5.59202C3 6.01984 3 6.57989 3 7.7V16.3C3 17.4201 3 17.9802 3.21799 18.408C3.40973 18.7843 3.71569 19.0903 4.09202 19.282C4.51984 19.5 5.07989 19.5 6.2 19.5Z" stroke="#000000" stroke-width="2" />
+              </svg>
+            )}
+          </button>
         </div>
+      </div>
+      {tableView ? (
+        <table
+          className="table-auto w-[80vw] mx-auto bg-gray-100 p-5"
+        >
+          <thead>
+            <tr className="">
+              <th className="text-start px-4 py-2">Full Name</th>
+              <th className="text-start px-4 py-2">Start Time</th>
+              <th className="text-start px-4 py-2">End Time</th>
+              <th className="text-start px-4 py-2">Summary</th>
+            </tr>
+          </thead>
+          <tbody>
+            {timesheetsAndEmployees.map((timesheet: any) => (
+              <tr className="hover:bg-gray-200 hover:drop-shadow-sm">
+                <td className="px-4 py-2">
+                  <Link to={`/timesheets/${timesheet.id}`}>
+                    {timesheet.full_name}
+                  </Link>
+                </td>
+                <td className="px-4 py-2">
+                  <Link to={`/timesheets/${timesheet.id}`}>
+                    {timesheet.start_time}
+                  </Link>
+                </td>
+                <td className="px-4 py-2">
+                  <Link to={`/timesheets/${timesheet.id}`}>
+                    {timesheet.end_time}
+                  </Link>
+                </td>
+                <td className="px-4 py-2">
+                  <Link to={`/timesheets/${timesheet.id}`}>
+                    {timesheet.summary}
+                  </Link>
+                </td>
+                <td>
+                  <Link to={`/timesheets/${timesheet.id}`}
+                    className="bg-gray-300 hover:bg-gray-700 hover:text-white text-black font-bold py-2 px-4 rounded"
+                  >
+                    View
+                  </Link>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       ) : (
-        <div>
-          <p>
-            To implement, see <a href="https://schedule-x.dev/docs/frameworks/react">Schedule X React documentation</a>.
-          </p>
+        <div
+          className="justify-center flex w-screen"
+        >
+          <CalendarApp timesheets={timesheetsAndEmployees} />
         </div>
       )}
       <hr />

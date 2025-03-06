@@ -37,5 +37,6 @@ CREATE TABLE timesheets (
     start_time DATETIME NOT NULL,
     end_time DATETIME NOT NULL,
     employee_id INTEGER NOT NULL,
+    summary TEXT NOT NULL,
     FOREIGN KEY (employee_id) REFERENCES employees(id)
 );
