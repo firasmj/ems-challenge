@@ -1,4 +1,5 @@
 import { Form, redirect, type ActionFunction } from "react-router";
+import EmployeesForm from "~/components/Forms";
 import { getDB } from "~/db/getDB";
 
 export const action: ActionFunction = async ({ request }) => {
@@ -16,8 +17,10 @@ export const action: ActionFunction = async ({ request }) => {
 
 export default function NewEmployeePage() {
   return (
-    <div>
-      <h1>Create New Employee</h1>
+    <div
+      className="container mt-4 mx-auto relative justify-items-center m-0 flex w-screen"
+    >
+      {/* <h1>Create New Employee</h1>
       <Form method="post">
         <div>
           <label htmlFor="full_name">Full Name</label>
@@ -29,7 +32,8 @@ export default function NewEmployeePage() {
       <ul>
         <li><a href="/employees">Employees</a></li>
         <li><a href="/timesheets">Timesheets</a></li>
-      </ul>
+      </ul> */}
+      <EmployeesForm method="post" />
     </div>
   );
 }
