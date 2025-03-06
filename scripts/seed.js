@@ -18,13 +18,59 @@ const db = new sqlite3.Database(sqlitePath);
 
 const employees = [
   {
-    full_name: 'John Doe'
+    full_name: "John Doe",
+    email: "john.doe@example.com",
+    phone: "+123456789",
+    birth_date: "1990-01-15",
+    job_title: "Software Engineer",
+    department: "IT",
+    salary: 75000,
+    start_date: "2020-06-01",
+    end_date: "",
   },
   {
-    full_name: 'Jane Smith'
+    full_name: "Jane Smith",
+    email: "jane.smith@example.com",
+    phone: "+987654321",
+    birth_date: "1985-03-22",
+    job_title: "Product Manager",
+    department: "Product",
+    salary: 90000,
+    start_date: "2018-09-15",
+    end_date: "",
   },
   {
-    full_name: 'Alice Johnson'
+    full_name: "Emily Johnson",
+    email: "emily.johnson@example.com",
+    phone: "+123987456",
+    birth_date: "1992-11-30",
+    job_title: "HR Specialist",
+    department: "Human Resources",
+    salary: 60000,
+    start_date: "2021-02-10",
+    end_date: "",
+  },
+  {
+    full_name: "Michael Brown",
+    email: "michael.brown@example.com",
+    phone: "+456789123",
+    birth_date: "1988-07-19",
+    job_title: "Marketing Coordinator",
+    department: "Marketing",
+    salary: 55000,
+    start_date: "2019-04-05",
+    end_date: "",
+  },
+  {
+    full_name: "Sophia Davis",
+    email: "sophia.davis@example.com",
+    phone: "+321654987",
+    birth_date: "1995-06-25",
+    job_title: "Data Analyst",
+    department: "Analytics",
+    salary: 70000,
+    start_date: "2020-11-20",
+    end_date: "",
   },
 ];
 

@@ -24,6 +24,7 @@ CREATE TABLE employees (
     birth_date DATE NOT NULL,
     job_title TEXT NOT NULL,
     department TEXT NOT NULL,
+    salary INTEGER NOT NULL,
     start_date DATE NOT NULL,
     end_date DATE NULL
     -- Rest of the fields
