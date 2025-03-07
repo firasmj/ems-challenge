@@ -16,7 +16,6 @@ export const loader: LoaderFunction = async ({ params }) => {
 export const action: ActionFunction = async ({ request, params }) => {
   const { employeeId } = params;
   const formData = await request.formData();
-  // const full_name = formData.get("full_name");
 
   const data = [
     formData.get("full_name"),

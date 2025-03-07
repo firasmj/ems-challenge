@@ -4,7 +4,6 @@ import { getDB } from "~/db/getDB";
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
-  // const full_name = formData.get("full_name");
 
   const data = [
     formData.get("full_name"),

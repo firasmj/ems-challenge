@@ -81,19 +81,6 @@ const TimesheetForm: React.FC<formProps> = ({ method, employees, timesheet }) =>
                 }
                 break;
         }
-
-        // if (timesheetData.start_time !== '' && name === 'end_time')
-        //     if (value < timesheetData.start_time) {
-        //         setErrors({ ...errors, [name]: 'End time cannot be before start time' });
-        //         // timesheetData.end_time = '';
-        //         setTimesheetData({ ...timesheetData, [name]: '' });
-        //         error = true;
-        //     } else {
-        //         setErrors({ ...errors, [name]: '' } as errors);
-        //         error = false;
-        //     }
-
-        // !error && setTimesheetData({ ...timesheetData, [name]: value });
     }
 
     return (

@@ -20,24 +20,27 @@ type Timesheet = {
 }
 
 function CalendarApp({ timesheets }: { timesheets: Timesheet[] }) {
-    const eventsService = useState(() => createEventsServicePlugin())[0]
+    const eventsService = useState(() => createEventsServicePlugin())[0];
+
+    const formatDateTime = (dateString: string) => {
+        const date = new Date(dateString);
+        return `${date.getFullYear()}-${(date.getMonth() + 1)
+            .toString()
+            .padStart(2, "0")}-${date.getDate().toString().padStart(2, "0")} ${date
+                .getHours()
+                .toString()
+                .padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}`;
+    };
 
     const calendar = useCalendarApp({
         views: [createViewDay(), createViewWeek(), createViewMonthGrid(), createViewMonthAgenda()],
-        // events: [
-        //   {
-        //     id: '1',
-        //     title: 'Event 1',
-        //     description: 'sadjfoisdjfid',
-        //     start: '2025-03-16 10:00',
-        //     end: '2025-03-16 12:00',
-        //   },
-        // ],
+
         events: timesheets.map((timesheet) => ({
             id: timesheet.id.toString(),
-            title: timesheet.full_name,
-            start: timesheet.start_time.replace('T', ' ').slice(0,-3),
-            end: timesheet.end_time.replace('T', ' ').slice(0,-3),
+            title: timesheet.summary,
+            people: [timesheet.full_name],
+            start: timesheet.start_time.replace('T', ' ').slice(0, 16),
+            end: timesheet.end_time.replace('T', ' ').slice(0, 16),
             description: timesheet.summary
         })),
         plugins: [eventsService]

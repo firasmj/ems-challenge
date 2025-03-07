@@ -12,7 +12,7 @@ export async function loader() {
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
-  const employee_id = formData.get("employee_id"); 
+  const employee_id = formData.get("employee_id");
   const start_time = formData.get("start_time");
   const end_time = formData.get("end_time");
   const summary = formData.get("summary");
@@ -27,12 +27,12 @@ export const action: ActionFunction = async ({ request }) => {
 }
 
 export default function NewTimesheetPage() {
-  const { employees } = useLoaderData(); 
+  const { employees } = useLoaderData();
   return (
     <div
       className="container mt-4 mx-auto relative justify-items-center m-0 flex w-screen"
     >
-      <TimesheetForm method="post" employees={employees}/>
+      <TimesheetForm method="post" employees={employees} />
     </div>
   );
 }

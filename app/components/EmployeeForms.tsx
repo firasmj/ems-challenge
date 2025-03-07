@@ -58,7 +58,7 @@ const EmployeesForm: React.FC<formProps> = ({ method, employee }) => {
                 if (!emailRegex.test(value)) {
                     setErrors({ ...errors, [name]: 'Invalid email format' });
                     empData.email = '';
-                }else{
+                } else {
                     setErrors({ ...errors, [name]: '' } as errors);
                 }
                 break;
@@ -67,7 +67,7 @@ const EmployeesForm: React.FC<formProps> = ({ method, employee }) => {
                 if (!phoneRegex.test(value)) {
                     setErrors({ ...errors, [name]: 'Invalid phone number' });
                     empData.phone = '';
-                }else{
+                } else {
                     setErrors({ ...errors, [name]: '' } as errors);
                 }
                 break;
@@ -75,11 +75,11 @@ const EmployeesForm: React.FC<formProps> = ({ method, employee }) => {
                 if (Number(value) < 800) {
                     setErrors({ ...errors, [name]: 'Salary cannot be under 800 (minimum wage)' });
                     empData.salary = 0;
-                }else{
+                } else {
                     setErrors({ ...errors, [name]: '' });
                 }
                 break;
-            case 'birthDate':
+            case 'birth_date':
                 const today = new Date();
                 const birthDate = new Date(value);
                 let age = today.getFullYear() - birthDate.getFullYear();
@@ -88,10 +88,10 @@ const EmployeesForm: React.FC<formProps> = ({ method, employee }) => {
                     age--;
                 }
                 if (age < 18) {
-                    setErrors({ ...errors, [name]: 'Employee must be at least 18 years old' } as errors);
+                    setErrors({ ...errors, [name]: 'Employee must be at least 18 years old' });
                     empData.birth_date = '';
-                }else{
-                    setErrors({ ...errors, [name]: '' }as errors);
+                } else {
+                    setErrors({ ...errors, [name]: '' });
                 }
                 break;
         }
@@ -175,11 +175,29 @@ const EmployeesForm: React.FC<formProps> = ({ method, employee }) => {
                         className="flex flex-col col-span-2"
                     >
                         <label htmlFor="department" className="justify-start text-start ml-2">Department</label>
-                        <input type="text" name="department" id="department"
+                        <select
+                            name="department"
+                            id="department"
+                            value={empData.department}
+                            className="bg-gray-100 p-2 py-3 rounded-md"
+                            onChange={(e) => {
+                                setEmpData({ ...empData, department: e.target.value });
+                            }}
+                            required
+                        >
+                            <option value="">Select a Department</option>
+                            <option value="IT">IT (Information Technology)</option>
+                            <option value="HR">Human Resources (HR)</option>
+                            <option value="Marketing">Marketing</option>
+                            <option value="Finance">Finance</option>
+                            <option value="Sales">Sales</option>
+                        </select>
+
+                        {/* <input type="text" name="department" id="department"
                             className="bg-gray-100 p-2 rounded-md"
                             value={empData.department}
                             onChange={handleChange}
-                            required />
+                            required /> */}
                     </div>
                     <div
                         className="flex flex-col col-span-2"
@@ -209,7 +227,7 @@ const EmployeesForm: React.FC<formProps> = ({ method, employee }) => {
                             className="bg-gray-100 p-2 rounded-md"
                             value={empData.end_date}
                             onChange={handleChange}
-                             />
+                        />
                     </div>
                     {/* <button type="submit" className="">Create Employee</button> */}
                     <div

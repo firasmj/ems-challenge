@@ -5,15 +5,13 @@ type LinkProps = {
     text: string;
 }
 
-const Link:React.FC<LinkProps> = ({ to, text }) => {
+const Link: React.FC<LinkProps> = ({ to, text }) => {
     const location = useLocation();
     const isActive = location.pathname === (to);
-    // const isActive = true;
-    return(
+    return (
         <NavLink
             to={to}
             className={`${isActive ? 'bg-gray-500 rounded-sm p-5 py-2 hover:text-blue-200' : 'hover:bg-gray-500 bg-transparent rounded-sm p-5 py-2 hover:text-white'}`}
-            // className="hover:bg-gray-500 rounded-sm p-5 py-2 hover:text-white"
         >
             {text}
         </NavLink>
@@ -26,10 +24,10 @@ const NavBar = () => {
         <div
             className="container w-screen mx-auto flex justify-around bg-gray-800 text-white p-5"
         >
-            <Link to="/" text="Home" />
             <Link to="/employees" text="Employees" />
             <Link to="/timesheets" text="Timesheets" />
             <Link to="/employees/new" text="New Employee" />
+            <Link to="/timesheets/new" text="New Timesheet" />
         </div>
     );
 }

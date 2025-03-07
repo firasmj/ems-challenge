@@ -15,7 +15,7 @@ export const action: ActionFunction = async ({ request, params }) => {
   const { timesheetId } = params;
 
   const formData = await request.formData();
-  const employee_id = formData.get("employee_id"); 
+  const employee_id = formData.get("employee_id");
   const start_time = formData.get("start_time");
   const end_time = formData.get("end_time");
   const summary = formData.get("summary");
@@ -30,14 +30,14 @@ export const action: ActionFunction = async ({ request, params }) => {
 }
 
 export default function NewTimesheetPage() {
-  const { employees, timesheet } = useLoaderData(); 
+  const { employees, timesheet } = useLoaderData();
   console.log(JSON.stringify(timesheet));
 
   return (
     <div
       className="container mt-4 mx-auto relative justify-items-center m-0 flex w-screen"
     >
-      <TimesheetForm method="put" employees={employees} timesheet={timesheet}/>
+      <TimesheetForm method="put" employees={employees} timesheet={timesheet} />
     </div>
   );
 }
