@@ -91,7 +91,7 @@ export default function TimesheetsPage() {
               setTableView(!tableView);
             }}>
               {tableView ? (
-                <div className="flex flex-row items-center">
+                <div className="flex flex-row items-center bg-gray-200 p-2 rounded-xl drop-shadow-md hover:brightness-110 scale-90">
                   <svg fill="#000000" version="1.1" opacity={0.3} id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                     width="40px" height="40px" viewBox="0 0 610.398 610.398"
                     className="mr-5 -mt-1">
@@ -130,7 +130,7 @@ export default function TimesheetsPage() {
                   </svg>
                 </div>
               ) : (
-                <div className="flex flex-row items-center">
+                <div className="flex flex-row items-center bg-gray-200 p-2 rounded-xl drop-shadow-md hover:brightness-110 scale-90">
                   <svg fill="#000000" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                     width="40px" height="40px" viewBox="0 0 610.398 610.398"
                     className="mr-5 -mt-1">
@@ -176,7 +176,7 @@ export default function TimesheetsPage() {
       </div>
       {tableView ? (
         <table
-          className="table-auto w-[80vw] mx-auto bg-gray-100 p-5"
+          className="container table-auto w-[80vw] mx-auto bg-gray-100 p-5"
         >
           <thead>
             <tr className="">

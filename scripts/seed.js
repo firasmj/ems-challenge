@@ -143,75 +143,75 @@ const employees = [
 
 const timesheets = [
   {
-    "id": 1,
-    "start_time": "2025-03-07T08:00:00",
-    "end_time": "2025-03-07T16:00:00",
-    "employee_id": 1,
-    "summary": "Completed software feature A"
+    id: 1,
+    start_time: "2025-03-08T08:00:00",
+    end_time: "2025-03-08T16:00:00",
+    employee_id: 1,
+    summary: "Completed software feature A",
   },
   {
-    "id": 2,
-    "start_time": "2025-03-07T09:00:00",
-    "end_time": "2025-03-07T17:00:00",
-    "employee_id": 2,
-    "summary": "Managed project updates"
+    id: 2,
+    start_time: "2025-03-08T09:00:00",
+    end_time: "2025-03-09T17:00:00", // Spans 2 days
+    employee_id: 2,
+    summary: "Managed project updates",
   },
   {
-    "id": 3,
-    "start_time": "2025-03-07T10:00:00",
-    "end_time": "2025-03-07T18:00:00",
-    "employee_id": 3,
-    "summary": "Conducted interviews"
+    id: 3,
+    start_time: "2025-03-09T10:00:00",
+    end_time: "2025-03-09T18:00:00",
+    employee_id: 3,
+    summary: "Conducted interviews",
   },
   {
-    "id": 4,
-    "start_time": "2025-03-07T07:30:00",
-    "end_time": "2025-03-07T15:30:00",
-    "employee_id": 4,
-    "summary": "Prepared financial reports"
+    id: 4,
+    start_time: "2025-03-09T07:30:00",
+    end_time: "2025-03-10T15:30:00", // Spans 2 days
+    employee_id: 4,
+    summary: "Prepared financial reports",
   },
   {
-    "id": 5,
-    "start_time": "2025-03-07T08:15:00",
-    "end_time": "2025-03-07T16:15:00",
-    "employee_id": 5,
-    "summary": "Client sales calls"
+    id: 5,
+    start_time: "2025-03-10T08:15:00",
+    end_time: "2025-03-10T16:15:00",
+    employee_id: 5,
+    summary: "Client sales calls",
   },
   {
-    "id": 6,
-    "start_time": "2025-03-07T09:45:00",
-    "end_time": "2025-03-07T17:45:00",
-    "employee_id": 6,
-    "summary": "Planned marketing campaign"
+    id: 6,
+    start_time: "2025-03-10T09:45:00",
+    end_time: "2025-03-12T17:45:00", // Spans 3 days
+    employee_id: 6,
+    summary: "Planned marketing campaign",
   },
   {
-    "id": 7,
-    "start_time": "2025-03-07T08:30:00",
-    "end_time": "2025-03-07T16:30:00",
-    "employee_id": 7,
-    "summary": "Resolved IT issues"
+    id: 7,
+    start_time: "2025-03-11T08:30:00",
+    end_time: "2025-03-11T16:30:00",
+    employee_id: 7,
+    summary: "Resolved IT issues",
   },
   {
-    "id": 8,
-    "start_time": "2025-03-07T07:45:00",
-    "end_time": "2025-03-07T15:45:00",
-    "employee_id": 8,
-    "summary": "Analyzed business performance"
+    id: 8,
+    start_time: "2025-03-11T07:45:00",
+    end_time: "2025-03-12T15:45:00", // Spans 2 days
+    employee_id: 8,
+    summary: "Analyzed business performance",
   },
   {
-    "id": 9,
-    "start_time": "2025-03-07T09:30:00",
-    "end_time": "2025-03-07T17:30:00",
-    "employee_id": 9,
-    "summary": "Fixed website bugs"
+    id: 9,
+    start_time: "2025-03-12T09:30:00",
+    end_time: "2025-03-12T17:30:00",
+    employee_id: 9,
+    summary: "Fixed website bugs",
   },
   {
-    "id": 10,
-    "start_time": "2025-03-07T10:15:00",
-    "end_time": "2025-03-07T18:15:00",
-    "employee_id": 10,
-    "summary": "Drafted content for campaign"
-  }
+    id: 10,
+    start_time: "2025-03-12T10:15:00",
+    end_time: "2025-03-12T18:15:00",
+    employee_id: 10,
+    summary: "Drafted content for campaign",
+  },
 ];
 
 
