@@ -1,5 +1,5 @@
 import { Form } from "react-router";
-import SubmitButton from "./Buttons";
+import { SubmitButton, DisabledButton, CancelButton } from "./Buttons";
 import { useState } from "react";
 
 interface Employee {
@@ -282,7 +282,7 @@ const EmployeesForm: React.FC<formProps> = ({ method, employee }) => {
                                 </label>
                                 <div className="mt-2 flex items-center space-x-3">
                                     <label className="btn-primary cursor-pointer flex items-center space-x-2 p-2 border rounded-md hover:bg-gray-100 dark:hover:bg-gray-800">
-                                    <svg fill="#000000" height="20px" width="20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                                        <svg fill="#000000" height="20px" width="20px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                                             viewBox="0 0 482.14 482.14">
                                             <g>
                                                 <path d="M142.024,310.194c0-8.007-5.556-12.782-15.359-12.782c-4.003,0-6.714,0.395-8.132,0.773v25.69
@@ -381,7 +381,17 @@ const EmployeesForm: React.FC<formProps> = ({ method, employee }) => {
                     <div
                         className="col-span-2 mt-5"
                     >
-                        <SubmitButton text={header} />
+                        {errors.email || errors.phone || errors.birth_date || errors.salary ?
+                            <>
+                                <DisabledButton text="Fix Errors" />
+                                <CancelButton text="Cancel" />
+                            </>
+                            :
+                            <>
+                                <SubmitButton text={header} />
+                                <CancelButton text="Cancel" />
+                            </>
+                        }
                     </div>
                 </Form>
             </div>

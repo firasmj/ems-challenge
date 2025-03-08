@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Form } from "react-router";
-import SubmitButton from "./Buttons";
+import { CancelButton, SubmitButton, DisabledButton } from "./Buttons";
 
 
 interface TimeSheet {
@@ -159,7 +159,17 @@ const TimesheetForm: React.FC<formProps> = ({ method, employees, timesheet }) =>
                 <div
                     className="col-span-2 mt-5"
                 >
-                    <SubmitButton text={header} />
+                    {errors.end_time || errors.start_time ?
+                            <>
+                                <DisabledButton text="Fix Errors" />
+                                <CancelButton text="Cancel" />
+                            </>
+                            :
+                            <>
+                                <SubmitButton text={header} />
+                                <CancelButton text="Cancel" />
+                            </>
+                        }
                 </div>
             </Form>
         </div>
