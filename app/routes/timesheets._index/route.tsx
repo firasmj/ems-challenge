@@ -2,7 +2,7 @@ import { Link, useLoaderData, type LoaderFunction } from "react-router";
 import { useState } from "react";
 import { getDB } from "~/db/getDB";
 import CalendarApp from "~/components/Calendar";
-import SubmitButton from "~/components/Buttons";
+import {SubmitButton} from "~/components/Buttons";
 
 export const loader: LoaderFunction = async ({ request }) => {
 

@@ -1,5 +1,5 @@
 import { Form, Link, NavLink, useLoaderData, type LoaderFunction } from "react-router"
-import SubmitButton from "~/components/Buttons"
+import {SubmitButton} from "~/components/Buttons"
 import { getDB } from "~/db/getDB"
 
 export const loader: LoaderFunction = async ({ request }) => {
