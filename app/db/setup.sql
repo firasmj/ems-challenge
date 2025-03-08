@@ -20,7 +20,7 @@ CREATE TABLE employees (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     full_name TEXT NULL,
     email TEXT NOT NULL UNIQUE,
-    phone TEXT NOT NULL,
+    phone TEXT NOT NULL UNIQUE,
     birth_date DATE NOT NULL,
     job_title TEXT NOT NULL,
     department TEXT NOT NULL,
@@ -40,6 +40,6 @@ CREATE TABLE timesheets (
     start_time DATETIME NOT NULL,
     end_time DATETIME NOT NULL,
     employee_id INTEGER NOT NULL,
-    summary TEXT NOT NULL,
+    summary TEXT NULL,
     FOREIGN KEY (employee_id) REFERENCES employees(id)
 );

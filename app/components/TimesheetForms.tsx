@@ -135,6 +135,7 @@ const TimesheetForm: React.FC<formProps> = ({ method, employees, timesheet }) =>
                         className="bg-gray-100 p-2 rounded-md"
                         value={timesheetData.end_time}
                         onChange={handleChange}
+                        required
                     />
                 </div>
 

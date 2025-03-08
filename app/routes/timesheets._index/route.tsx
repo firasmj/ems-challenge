@@ -57,7 +57,7 @@ export default function TimesheetsPage() {
             >
               <label htmlFor="employee_id" className="justify-start text-start ml-2">Choose Employee</label>
               <div
-                className="flex flex-row"
+                className="flex lg:flex-row sm:flex-col"
               >
               <form method="get" action={'/timesheets'} onChange={(e) => (e.target as HTMLFormElement).form.submit()}>
                 <select

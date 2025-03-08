@@ -22,7 +22,7 @@ const NavBar = () => {
 
     return (
         <div
-            className="container w-screen mx-auto flex justify-around bg-gray-800 text-white p-5"
+            className=" w-screen mx-auto flex justify-around bg-gray-800 text-white p-5"
         >
             <Link to="/employees" text="Employees" />
             <Link to="/timesheets" text="Timesheets" />
