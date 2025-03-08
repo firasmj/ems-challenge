@@ -26,7 +26,10 @@ CREATE TABLE employees (
     department TEXT NOT NULL,
     salary INTEGER NOT NULL,
     start_date DATE NOT NULL,
-    end_date DATE NULL
+    end_date DATE NULL,
+    photo TEXT NULL,
+    cv TEXT NULL,
+    id_file TEXT NULL
     -- Rest of the fields
 );
 

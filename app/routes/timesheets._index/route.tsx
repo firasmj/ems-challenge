@@ -2,6 +2,7 @@ import { Link, useLoaderData, type LoaderFunction } from "react-router";
 import { useState } from "react";
 import { getDB } from "~/db/getDB";
 import CalendarApp from "~/components/Calendar";
+import SubmitButton from "~/components/Buttons";
 
 export const loader: LoaderFunction = async ({ request }) => {
 
@@ -9,8 +10,16 @@ export const loader: LoaderFunction = async ({ request }) => {
 
   const db = await getDB();
 
+  const query = url.searchParams.get("query") || "";
+
   const selection = url.searchParams.get('employee_id') || '';
   let timesheetsAndEmployees: any[] = [];
+  if(query){
+    timesheetsAndEmployees = await db.all(
+      "SELECT timesheets.*, employees.full_name, employees.id AS employee_id, summary FROM timesheets JOIN employees ON timesheets.employee_id = employees.id WHERE employees.full_name LIKE ? OR timesheets.summary LIKE ?",
+      [`%${query}%`, `%${query}%`]
+    );
+  }else
   if (selection && selection !== '-1') {
     timesheetsAndEmployees = await db.all(
       "SELECT timesheets.*, employees.full_name, employees.id AS employee_id, summary FROM timesheets JOIN employees ON timesheets.employee_id = employees.id WHERE employees.id = ?",
@@ -47,11 +56,14 @@ export default function TimesheetsPage() {
               className="flex flex-col col-span-2"
             >
               <label htmlFor="employee_id" className="justify-start text-start ml-2">Choose Employee</label>
+              <div
+                className="flex flex-row"
+              >
               <form method="get" action={'/timesheets'} onChange={(e) => (e.target as HTMLFormElement).form.submit()}>
                 <select
                   name="employee_id"
                   id="employee_id"
-                  className="bg-gray-100 p-2 rounded-md"
+                  className="bg-gray-100 p-2 rounded-md mr-8"
                   value={employee}
                   defaultValue={-1}
                   onChange={(e) => {
@@ -65,6 +77,15 @@ export default function TimesheetsPage() {
                   })}
                 </select>
               </form>
+              <form method="get" action={'/timesheets'}>
+                <input type="text"
+                  name="query"
+                  placeholder="Search timesheet..."
+                  className="bg-gray-100 p-2 rounded-md mr-2"
+                />
+                <SubmitButton text="Search" />
+              </form>
+              </div>
             </div>
             <button onClick={() => {
               setTableView(!tableView);
